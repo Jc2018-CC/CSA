@@ -17,7 +17,7 @@ public class Main extends Application {
         root.setAlignment(Pos.BOTTOM_CENTER);
         root.setSpacing(5);
 
-        Scene scene = new Scene(root, 1280, 720);
+        Scene scene = new Scene(root, 400, 300);
 
         primaryStage.setTitle("Message App");
         primaryStage.setScene(scene);

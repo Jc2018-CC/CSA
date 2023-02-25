@@ -11,7 +11,7 @@ public class InputField {
 
     public InputField(Callback fn) {
         msgInput = new TextField();
-        msgInput.setMinWidth(500);
+        msgInput.setMinWidth(300);
 
         msgSendButton = new Button("Send");
 
