@@ -22,16 +22,20 @@ public class Main {
         dytxt.setBounds(20,100,50,20);
         jFrame.add(dytxt);
 
-        JLabel dytxt = new JLabel("DY");
-        dytxt.setText("DY");
-        dytxt.setBounds(20,100,50,20);
-        jFrame.add(dytxt);
+        JLabel line = new JLabel("line");
+        line.setText("_____");
+        line.setBounds(14,103,50,20);
+        jFrame.add(line);
 
         JLabel dxtxt = new JLabel("DX");
         dxtxt.setText("DX");
-        dxtxt.setBounds(20,130,50,20);
+        dxtxt.setBounds(20,120,50,20);
         jFrame.add(dxtxt);
-        //tf = new TextField("")
+
+        JTextField tf;
+        tf = new JTextField("Enter your differential equation");
+        tf.setBounds(65, 105, 220, 30);
+        jFrame.add(tf);
         
         jFrame.setVisible(true);
     }
