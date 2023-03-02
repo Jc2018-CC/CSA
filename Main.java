@@ -10,7 +10,7 @@ public class Main {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         Button b = new Button("submit");
-        b.setBounds(50,30,50,20);
+        b.setBounds(50,30,50,30);
         jFrame.add(b);
         
         JLabel label = new JLabel("Slope Field Title");
