@@ -1,6 +1,5 @@
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.Border;
 
 public class Main {
     private static void createAndShowGUI() {
@@ -17,8 +16,8 @@ public class Main {
         label.setText("Slope Field Generator");
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setVerticalAlignment(JLabel.TOP);
-
         jFrame.add(label);
+        
         jFrame.setVisible(true);
     }
     
