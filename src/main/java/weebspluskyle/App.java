@@ -1,7 +1,9 @@
+package weebspluskyle;
+
 import java.awt.*;
 import javax.swing.*;
 
-public class Main {
+public class App {
     private static void createAndShowGUI() {
         JFrame jFrame = new JFrame("Slope Field Generator");
         jFrame.setLayout(null);
