@@ -14,6 +14,13 @@ public class App {
         b.setBounds(40,280,50,30);
         jFrame.add(b);
         
+        //b button listener
+        b.addActionListener(e -> {
+            System.out.println("Have fun!");
+            String equation = tf.getTest();
+            SlopeField.graph(equation)
+        });
+        
         JLabel label = new JLabel("Slope Field Title");
         label.setText("Slope Field Generator");
         label.setBounds(200,20,200,20);
@@ -45,4 +52,9 @@ public class App {
   public static void main(String[] args) {
     createAndShowGUI();
   }
+}
+class SlopeField{
+    public static void graph(String equation, int xMin, int yMin, int xMax, int yMax, double stepSize){
+        System.out.println("equation:" + equation)
+    }
 }
