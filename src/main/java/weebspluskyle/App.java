@@ -39,7 +39,7 @@ public class App {
         // b button listener
         b.addActionListener(e -> {
             String equation = tf.getText();
-            Graph.draw(equation, 0, 0, 0, 0, 0);
+            GraphPrim.draw(equation);
             // Graph.draw(equation, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSet);
             // once ricky and harsh do backend shit
         });
