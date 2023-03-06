@@ -1,14 +1,15 @@
 package weebspluskyle;
 
-import java.awt.Graphics2D;
-import java.awt.Panel;
-//hmm this is diff, maybe this class will do the solving of equa, and another is the drawing board?
+//import java.awt.Graphics2D;
+//import java.awt.Panel;
+//hmm this is diff, maybe this class will do the solving of equal, and another is the drawing board?
 import javax.swing.JFrame;
 
-//this is gonna be my baby version with fixed windows size and shit, no scrolling or zooming
+//this is going to be my baby version with fixed windows size and shit, no scrolling or zooming
 public class GraphPrim extends JFrame{
     public static void draw(String equation) {
         // TODO
+
         System.out.println("Equation: " + equation);
         //JFrame DisplayScreen =
         //Kyle Testing
