@@ -10,7 +10,7 @@ public class GraphPrim extends JFrame{
     public static void draw(String equation) {
         // TODO
         System.out.println("Equation: " + equation);
-        
+        //JFrame DisplayScreen = new GraphPrim();
         /*
         JFrame DisplayScreen = new JFrame("Slope Field Display");
         DisplayScreen.setSize(500,500);
