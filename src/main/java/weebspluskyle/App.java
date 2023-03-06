@@ -39,9 +39,10 @@ public class App {
         // b button listener
         b.addActionListener(e -> {
             String equation = tf.getText();
-            GraphPrim.draw(equation);
             // Graph.draw(equation, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSet);
-            // once ricky and harsh do backend shit
+            // above line: once ricky and harsh do backend shit
+            //GraphPrim.draw("x");
+            //mine
         });
 
         jFrame.setVisible(true);
