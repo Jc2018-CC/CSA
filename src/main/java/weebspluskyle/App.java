@@ -41,7 +41,7 @@ public class App {
             String equation = tf.getText();
             // Graph.draw(equation, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSet);
             // above line: once ricky and harsh do backend shit
-            //GraphPrim.draw("x");
+            GraphPrim.draw(equation);
             //mine
         });
 
