@@ -11,7 +11,7 @@ public class App {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel label = new JLabel("Slope Field Title");
-        label.setText("Slope Field Generator");
+        label.setText("Slope Field Generator Lmao");
         label.setBounds(200, 20, 200, 20);
         jFrame.add(label);
 
