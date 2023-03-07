@@ -19,7 +19,8 @@ public class Graph extends JPanel {
         System.out.println("xMax: " + xMax);
         System.out.println("yMax: " + yMax);
         System.out.println("Equation: " + stepSize);
-        repaint();
+        //not working below
+        //repaint();
     }
 
     @Override
