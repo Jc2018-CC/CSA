@@ -42,9 +42,11 @@ public class App {
         // b button listener
         b.addActionListener(e -> {
             String equation = tf.getText();
+
+            graph.repaint();
             // Graph.draw(equation, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSet);
             // above line: once ricky and harsh do backend shit
-            GraphPrim.draw(equation);
+            // GraphPrim.draw(equation);
             //mine
         });
 

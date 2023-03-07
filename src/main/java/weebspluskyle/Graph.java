@@ -26,10 +26,12 @@ public class Graph extends JPanel {
     // defaulted to 10 by 10 grid, remind me to make it a paremeter later
     private void drawGrid(Graphics g) {
         g.setColor(Color.LIGHT_GRAY);
-        for (int x = (size / 10); x < size; x += (size / 10)) {
+        int gridWidth = size / 10;
+
+        for (int x = gridWidth; x < size; x += (size / 10)) {
             g.drawLine(x, 0, x, size);
         }
-        for (int y = (size / 10); y < size; y += (size / 10)) {
+        for (int y = gridWidth; y < size; y += (size / 10)) {
             g.drawLine(0, y, size, y);
         }
         g.setColor(Color.BLACK);
