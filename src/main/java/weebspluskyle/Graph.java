@@ -12,8 +12,13 @@ public class Graph extends JPanel {
         setBackground(Color.WHITE);
     }
 
-    public void draw(String equation, int xMin, int yMin, int xMax, int yMax, double stepSize) {
+    public static void draw(String equation, double xMin, double yMin, double xMax, double yMax, int stepSize) {
         System.out.println("Equation: " + equation);
+        System.out.println("xMin: " + xMin);
+        System.out.println("yMin: " + yMin);
+        System.out.println("xMax: " + xMax);
+        System.out.println("yMax: " + yMax);
+        System.out.println("Equation: " + stepSize);
         repaint();
     }
 

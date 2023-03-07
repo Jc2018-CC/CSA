@@ -32,6 +32,26 @@ public class App {
         tf.setBounds(65, 105, 220, 30);
         jFrame.add(tf);
 
+        JTextField xMin = new JTextField("X Min");
+        xMin.setBounds(65, 150, 50, 30);
+        jFrame.add(xMin);
+
+        JTextField xMax = new JTextField("X Max");
+        xMax.setBounds(130, 150, 50, 30);
+        jFrame.add(xMax);
+
+        JTextField yMin = new JTextField("Y Min");
+        yMin.setBounds(65, 190, 50, 30);
+        jFrame.add(yMin);
+
+        JTextField yMax = new JTextField("Y Max");
+        yMax.setBounds(130, 190, 50, 30);
+        jFrame.add(yMax);
+
+        JTextField stepSet = new JTextField("Gap Size");
+        stepSet.setBounds(130, 240, 80, 30);
+        jFrame.add(stepSet);
+        
         Button b = new Button("submit");
         b.setBounds(40, 280, 100, 30);
         jFrame.add(b);
@@ -41,13 +61,21 @@ public class App {
 
         // b button listener
         b.addActionListener(e -> {
+            
             String equation = tf.getText();
-
+            String s1 = xMin.getText();
+            String s2 = yMin.getText();
+            String s3 = xMax.getText();
+            String s4 = xMax.getText();
+            String s5 = stepSet.getText();
+            double xMinSet = Double.parseDouble(s1);
+            double yMinSet = Double.parseDouble(s2);
+            double xMaxSet = Double.parseDouble(s3);
+            double yMaxSet = Double.parseDouble(s4);
+            int stepSize = Integer.parseInt(s5);
+            
             graph.repaint();
-            // Graph.draw(equation, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSet);
-            // above line: once ricky and harsh do backend shit
-            // GraphPrim.draw(equation);
-            //mine
+            Graph.draw(equation, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSize);
         });
 
         jFrame.setVisible(true);
