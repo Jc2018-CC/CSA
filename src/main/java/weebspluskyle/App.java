@@ -7,7 +7,7 @@ public class App {
     private static void createAndShowGUI() {
         JFrame jFrame = new JFrame("Slope Field Generator");
         jFrame.setLayout(null);
-        jFrame.setSize(500, 360);
+        jFrame.setSize(650, 450);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel label = new JLabel("Slope Field Title");
@@ -35,6 +35,9 @@ public class App {
         Button b = new Button("submit");
         b.setBounds(40, 280, 100, 30);
         jFrame.add(b);
+
+        Graph graph = new Graph(300, 70, 300);
+        jFrame.add(graph);
 
         // b button listener
         b.addActionListener(e -> {
