@@ -75,7 +75,7 @@ public class App {
             int stepSize = Integer.parseInt(s5);
             
             graph.repaint();
-            Graph.draw(equation, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSize);
+            //Graph.draw(equation, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSize);
         });
 
         jFrame.setVisible(true);
