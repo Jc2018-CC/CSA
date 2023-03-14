@@ -11,7 +11,7 @@ public class App {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel label = new JLabel("Slope Field Title");
-        label.setText("Slope Field Generator Lmao");
+        label.setText("Slope Field Generator");
         label.setBounds(200, 20, 200, 20);
         jFrame.add(label);
 
@@ -51,6 +51,14 @@ public class App {
         JTextField stepSet = new JTextField("Gap Size");
         stepSet.setBounds(130, 240, 80, 30);
         jFrame.add(stepSet);
+
+        Button c = new Button("Meet the devs");
+        c.setBounds(40, 350, 100, 30);
+        jFrame.add(c);
+        
+        c.addActionListener(e -> {
+            Devs.newScreen();
+        });
         
         Button b = new Button("submit");
         b.setBounds(40, 280, 100, 30);
