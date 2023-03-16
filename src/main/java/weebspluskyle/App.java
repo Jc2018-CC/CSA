@@ -3,6 +3,9 @@ package weebspluskyle;
 import java.awt.*;
 import javax.swing.*;
 
+
+
+
 public class App {
     private static void createAndShowGUI() {
         JFrame jFrame = new JFrame("Slope Field Generator");
@@ -18,6 +21,7 @@ public class App {
         JLabel dytxt = new JLabel("DY");
         dytxt.setBounds(20, 100, 50, 20);
         jFrame.add(dytxt);
+        
 
         JLabel line = new JLabel("_____");
         line.setBounds(14, 103, 50, 20);
@@ -28,26 +32,32 @@ public class App {
         jFrame.add(dxtxt);
 
         JTextField tf;
-        tf = new JTextField("Enter your differential equation");
+        tf = new JTextField(10);
         tf.setBounds(65, 105, 220, 30);
         jFrame.add(tf);
-
-        JTextField xMin = new JTextField("X Min");
+        TextPrompt tpEquation = new TextPrompt("Enter your differential equation", tf);
+        
+        JTextField xMin = new JTextField(5);
         xMin.setBounds(65, 150, 50, 30);
         jFrame.add(xMin);
-
+        TextPrompt tpXMin = new TextPrompt("X Min", xMin);
+        
         JTextField xMax = new JTextField("X Max");
         xMax.setBounds(130, 150, 50, 30);
         jFrame.add(xMax);
-
+        TextPrompt tpXMax = new TextPrompt("X Max", xMax);
+        
+        
         JTextField yMin = new JTextField("Y Min");
         yMin.setBounds(65, 190, 50, 30);
         jFrame.add(yMin);
-
+        TextPrompt tpYMin = new TextPrompt("Y Min", yMin);
+        
         JTextField yMax = new JTextField("Y Max");
         yMax.setBounds(130, 190, 50, 30);
         jFrame.add(yMax);
-
+        TextPrompt tpYMax = new TextPrompt("Y Max", yMax);
+          
         JTextField stepSet = new JTextField("Gap Size");
         stepSet.setBounds(130, 240, 80, 30);
         jFrame.add(stepSet);
