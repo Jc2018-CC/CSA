@@ -54,18 +54,18 @@ public class App {
         TextPrompt tpYMin = new TextPrompt("Y Min", yMin);
         
         JTextField yMax = new JTextField("Y Max");
-        yMax.setBounds(180, 190, 50, 30);
+        yMax.setBounds(180, 190, 100, 30);
         jFrame.add(yMax);
         TextPrompt tpYMax = new TextPrompt("Y Max", yMax);
           
         JTextField stepSet = new JTextField();
-        stepSet.setBounds(130, 300, 80, 30);
+        stepSet.setBounds(130, 230, 80, 30);
         jFrame.add(stepSet);
         TextPrompt tpGap = new TextPrompt("Gap Size", stepSet);
         
 
-        Button c = new Button("Meet the devs");
-        c.setBounds(40, 350, 100, 30);
+        Button c = new Button("Meet the Devs (Kyle was the best one)");
+        c.setBounds(40, 310, 250, 30);
         jFrame.add(c);
         
         c.addActionListener(e -> {
