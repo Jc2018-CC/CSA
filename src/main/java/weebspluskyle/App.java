@@ -62,15 +62,7 @@ public class App {
         stepSet.setBounds(130, 230, 80, 30);
         jFrame.add(stepSet);
         TextPrompt tpGap = new TextPrompt("Gap Size", stepSet);
-        
-
-        Button c = new Button("Meet the Devs (Kyle was the best one)");
-        c.setBounds(40, 310, 250, 30);
-        jFrame.add(c);
-        
-        c.addActionListener(e -> {
-            Devs.newScreen();
-        });
+    
         
         Button b = new Button("submit");
         b.setBounds(40, 280, 100, 30);
@@ -97,7 +89,15 @@ public class App {
             graph.repaint();
             //Graph.draw(equation, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSize);
         });
-
+        
+        Button c = new Button("Meet the Devs (Kyle was the best one)");
+        c.setBounds(40, 310, 250, 30);
+        jFrame.add(c);
+        
+        c.addActionListener(e -> {
+            Devs.newScreen();
+        });
+        
         jFrame.setVisible(true);
     }
 
