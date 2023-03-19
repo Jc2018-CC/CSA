@@ -17,8 +17,8 @@ public class App {
         JLabel dytxt = new JLabel("DY");
         dytxt.setBounds(20, 100, 50, 20);
         jFrame.add(dytxt);
-        
-        JLabel line = new JLabel("_____");
+
+        JLabel line = new JLabel("_____ =");
         line.setBounds(14, 103, 50, 20);
         jFrame.add(line);
 
@@ -26,38 +26,43 @@ public class App {
         dxtxt.setBounds(20, 120, 50, 20);
         jFrame.add(dxtxt);
 
-        JTextField tf;
-        tf = new JTextField(20);
+        JTextField tf = new JTextField(20);
         tf.setBounds(65, 105, 220, 30);
-        jFrame.add(tf);
         TextPrompt tpEquation = new TextPrompt("Enter your differential equation", tf);
-        
+        tpEquation.changeAlpha(170);
+        jFrame.add(tf);
+
         JTextField xMin = new JTextField(10);
         xMin.setBounds(65, 150, 100, 30);
-        jFrame.add(xMin);
         TextPrompt tpXMin = new TextPrompt("X Min", xMin);
-        
+        tpXMin.changeAlpha(170);
+        jFrame.add(xMin);
+
         JTextField xMax = new JTextField(10);
         xMax.setBounds(180, 150, 100, 30);
-        jFrame.add(xMax);
         TextPrompt tpXMax = new TextPrompt("X Max", xMax);
-                
+        tpXMax.changeAlpha(170);
+        jFrame.add(xMax);
+
         JTextField yMin = new JTextField(10);
         yMin.setBounds(65, 190, 100, 30);
-        jFrame.add(yMin);
         TextPrompt tpYMin = new TextPrompt("Y Min", yMin);
-        
+        tpYMin.changeAlpha(170);
+        jFrame.add(yMin);
+
         JTextField yMax = new JTextField(10);
         yMax.setBounds(180, 190, 100, 30);
-        jFrame.add(yMax);
         TextPrompt tpYMax = new TextPrompt("Y Max", yMax);
-          
+        tpYMax.changeAlpha(170);
+        jFrame.add(yMax);
+
         JTextField stepSet = new JTextField();
         stepSet.setBounds(130, 230, 80, 30);
-        jFrame.add(stepSet);
         TextPrompt tpGap = new TextPrompt("Gap Size", stepSet);
-    
-        Button b = new Button("submit");
+        tpGap.changeAlpha(170);
+        jFrame.add(stepSet);
+
+        Button b = new Button("Submit");
         b.setBounds(40, 280, 100, 30);
         jFrame.add(b);
 
@@ -66,26 +71,30 @@ public class App {
 
         // b button listener
         b.addActionListener(e -> {
-            
-            String equation = tf.getText();
+            String rawExpression = tf.getText();
             double xMinSet = Double.parseDouble(xMin.getText());
-            double xMaxSet = Double.parseDouble(yMin.getText());
-            double yMinSet = Double.parseDouble(xMax.getText());
-            double yMaxSet = Double.parseDouble(xMax.getText());
+            double yMinSet = Double.parseDouble(yMin.getText());
+            double xMaxSet = Double.parseDouble(xMax.getText());
+            double yMaxSet = Double.parseDouble(yMax.getText());
             int stepSize = Integer.parseInt(stepSet.getText());
-            
-            graph.repaint();
-            //Graph.draw(equation, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSize);
+
+            try {
+                Expression expression = new Expression();
+                expression.tokenize(rawExpression);
+                graph.draw(expression, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSize);
+            } catch (RuntimeException exception) {
+                exception.printStackTrace();
+            }
         });
-        
-        Button c = new Button("Meet the Devs (Kyle was the best one)");
+
+        Button c = new Button("Meet the Devs of Weebs + Kyle");
         c.setBounds(40, 310, 250, 30);
         jFrame.add(c);
-        
+
         c.addActionListener(e -> {
             Devs.newScreen();
         });
-        
+
         jFrame.setVisible(true);
     }
 
