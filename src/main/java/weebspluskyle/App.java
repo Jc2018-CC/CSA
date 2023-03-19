@@ -14,7 +14,7 @@ public class App {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel label = new JLabel("Slope Field Title");
-        label.setText("Slope Field Generator");
+            label.setText("Slope Field Generator");
         label.setBounds(200, 20, 200, 20);
         jFrame.add(label);
 
@@ -42,18 +42,18 @@ public class App {
         jFrame.add(xMin);
         TextPrompt tpXMin = new TextPrompt("X Min", xMin);
         
-        JTextField xMax = new JTextField("X Max");
+        JTextField xMax = new JTextField(10);
         xMax.setBounds(180, 150, 100, 30);
         jFrame.add(xMax);
         TextPrompt tpXMax = new TextPrompt("X Max", xMax);
         
         
-        JTextField yMin = new JTextField("Y Min");
+        JTextField yMin = new JTextField(10);
         yMin.setBounds(65, 190, 100, 30);
         jFrame.add(yMin);
         TextPrompt tpYMin = new TextPrompt("Y Min", yMin);
         
-        JTextField yMax = new JTextField("Y Max");
+        JTextField yMax = new JTextField(10);
         yMax.setBounds(180, 190, 100, 30);
         jFrame.add(yMax);
         TextPrompt tpYMax = new TextPrompt("Y Max", yMax);
@@ -75,16 +75,11 @@ public class App {
         b.addActionListener(e -> {
             
             String equation = tf.getText();
-            String s1 = xMin.getText();
-            String s2 = yMin.getText();
-            String s3 = xMax.getText();
-            String s4 = xMax.getText();
-            String s5 = stepSet.getText();
-            double xMinSet = Double.parseDouble(s1);
-            double yMinSet = Double.parseDouble(s2);
-            double xMaxSet = Double.parseDouble(s3);
-            double yMaxSet = Double.parseDouble(s4);
-            int stepSize = Integer.parseInt(s5);
+            double xMinSet = Double.parseDouble(xMin.getText());
+            double xMaxSet = Double.parseDouble(yMin.getText());
+            double yMinSet = Double.parseDouble(xMax.getText());
+            double yMaxSet = Double.parseDouble(xMax.getText());
+            int stepSize = Integer.parseInt(stepSet.getText());
             
             graph.repaint();
             //Graph.draw(equation, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSize);
