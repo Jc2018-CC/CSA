@@ -3,9 +3,6 @@ package weebspluskyle;
 import java.awt.*;
 import javax.swing.*;
 
-
-
-
 public class App {
     private static void createAndShowGUI() {
         JFrame jFrame = new JFrame("Slope Field Generator");
@@ -14,7 +11,6 @@ public class App {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel label = new JLabel("Slope Field Title");
-            label.setText("Slope Field Generator");
         label.setBounds(200, 20, 200, 20);
         jFrame.add(label);
 
@@ -22,7 +18,6 @@ public class App {
         dytxt.setBounds(20, 100, 50, 20);
         jFrame.add(dytxt);
         
-
         JLabel line = new JLabel("_____");
         line.setBounds(14, 103, 50, 20);
         jFrame.add(line);
@@ -46,8 +41,7 @@ public class App {
         xMax.setBounds(180, 150, 100, 30);
         jFrame.add(xMax);
         TextPrompt tpXMax = new TextPrompt("X Max", xMax);
-        
-        
+                
         JTextField yMin = new JTextField(10);
         yMin.setBounds(65, 190, 100, 30);
         jFrame.add(yMin);
@@ -63,7 +57,6 @@ public class App {
         jFrame.add(stepSet);
         TextPrompt tpGap = new TextPrompt("Gap Size", stepSet);
     
-        
         Button b = new Button("submit");
         b.setBounds(40, 280, 100, 30);
         jFrame.add(b);
