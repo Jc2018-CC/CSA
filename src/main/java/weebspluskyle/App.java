@@ -26,10 +26,10 @@ public class App {
         JLabel dxtxt = new JLabel("DX");
         addComponent(jFrame, dxtxt, 0, 3, 3, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
 
-        JTextField tf = new JTextField(20);
-        TextPrompt tpEquation = new TextPrompt("Enter your differential equation", tf);
+        JTextField equation = new JTextField(20);
+        TextPrompt tpEquation = new TextPrompt("Enter your differential equation", equation);
         tpEquation.changeAlpha(170);
-        addComponent(jFrame, tf, 3, 2, 4, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
+        addComponent(jFrame, equation, 3, 2, 4, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
 
         
         JTextField xMin = new JTextField(10);
@@ -66,13 +66,13 @@ public class App {
         });
 
         Button submit = new Button("Submit");
-        addComponent(jFrame, submit, 1, 15, 4, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
+        addComponent(jFrame, submit, 2, 15, 3, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
 
         Graph graph = new Graph(300, 70, 240);
         addComponent(jFrame, graph, 8, 3, 8, 8, GridBagConstraints.CENTER, GridBagConstraints.BOTH);        
         
         submit.addActionListener(e -> {
-            String rawExpression = tf.getText();
+            String rawExpression = equation.getText();
             double xMinSet = Double.parseDouble(xMin.getText());
             double yMinSet = Double.parseDouble(yMin.getText());
             double xMaxSet = Double.parseDouble(xMax.getText());
