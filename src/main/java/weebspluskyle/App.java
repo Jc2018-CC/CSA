@@ -8,8 +8,8 @@ public class App {
     
     private static void createAndShowGUI() {
         JFrame jFrame = new JFrame("Slope Field Generator");
-        jFrame.setLayout(null);
-        jFrame.setSize(650, 450);
+        jFrame.setLayout(new GridBagLayout());
+        jFrame.setSize(600, 600);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel label = new JLabel("Slope Field Title");
@@ -59,17 +59,17 @@ public class App {
         addComponent(jFrame, stepSet, 1, 9, 4, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
         
         Button devs = new Button("Meet the Devs of Weebs + Kyle");
-        addComponent(jFrame, devs, 1, 12, 4, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
+        addComponent(jFrame, devs, 12, 15, 4, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
         
         devs.addActionListener(e -> {
             Devs.newScreen();
         });
 
         Button submit = new Button("Submit");
-        addComponent(jFrame, submit, 1, 11, 4, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
+        addComponent(jFrame, submit, 1, 15, 4, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
 
-        Graph graph = new Graph(300, 70, 300);
-        addComponent(jFrame, graph, 7, 4, 6, 6, GridBagConstraints.CENTER, GridBagConstraints.BOTH);        
+        Graph graph = new Graph(300, 70, 240);
+        addComponent(jFrame, graph, 8, 3, 8, 8, GridBagConstraints.CENTER, GridBagConstraints.BOTH);        
         
         submit.addActionListener(e -> {
             String rawExpression = tf.getText();
