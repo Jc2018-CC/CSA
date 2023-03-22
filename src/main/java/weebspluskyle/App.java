@@ -68,7 +68,7 @@ public class App {
         Button submit = new Button("Submit");
         addComponent(jFrame, submit, 2, 15, 3, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
 
-        Graph graph = new Graph(300, 70, 240);
+        Graph graph = new Graph(300, 70, 250);
         addComponent(jFrame, graph, 8, 3, 8, 8, GridBagConstraints.CENTER, GridBagConstraints.BOTH);        
         
         submit.addActionListener(e -> {

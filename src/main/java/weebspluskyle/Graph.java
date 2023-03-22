@@ -42,18 +42,33 @@ public class Graph extends JPanel {
     }
 
     private void drawGrid(Graphics g) {
-        g.setColor(Color.LIGHT_GRAY);
         int gridWidth = size / 10;
-
-        for (int x = gridWidth; x < size; x += (size / 10)) {
-            g.drawLine(x, 0, x, size);
-        }
-        for (int y = gridWidth; y < size; y += (size / 10)) {
-            g.drawLine(0, y, size, y);
-        }
         g.setColor(Color.BLACK);
-        g.drawLine(size / 2, 0, size / 2, size);
-        g.drawLine(0, size / 2, size, size / 2);
+        int xAxis = (int)(size * (-xMin/(xMax-xMin)));
+        g.drawLine(xAxis, 0, xAxis, size);
+        int yAxis = (int)(-size * (-yMin/(yMax-yMin))) + size;
+        g.drawLine(0, yAxis, size, yAxis);
+        g.setColor(Color.LIGHT_GRAY);
+        int x = xAxis - gridWidth;
+        while(x > 0){
+            g.drawLine(x, 0, x, size);
+            x -= gridWidth;
+        }
+        x = xAxis + gridWidth;
+        while(x < size){
+            g.drawLine(x, 0, x, size);
+            x += gridWidth;
+        }
+        int y = yAxis - gridWidth;
+        while(y > 0){
+            g.drawLine(0, y, size, y);
+            y -= gridWidth;
+        }
+        y = yAxis + gridWidth;
+        while(y < size){
+            g.drawLine(0, y, size, y);
+            y += gridWidth;
+        }
     }
 
     private void drawSlopes(Graphics g) {
@@ -70,24 +85,25 @@ public class Graph extends JPanel {
         double yIncrement = (yMax - yMin) / step;
         double xScaler = size / (xMax - xMin);
         double yScaler = size / (yMax - yMin);
-        double dashSize = size / (2 * step);
+        double dashSize = size / (2.5 * step);
         double m = 0;
         for (int i = 0; i < step; i++) {
             for (int j = 0; j < step; j++) {
                 double xMid = xMin + (0.5 + i) * xIncrement;
                 double yMid = yMin + (0.5 + j) * yIncrement;
                 m = e.evaluate(xMid, yMid);
+                Color c = new Color((int)(255/(1+Math.exp(m))),0,(int)(255/(1+Math.exp(-m))));
                 m *= (yScaler / xScaler);
                 xMid = xScaler * (xMid - xMin);
                 yMid = -(yScaler * (yMid - yMin) - size);
                 double deltaX = (dashSize) / (Math.sqrt(1 + m * m));
                 double deltaY = (dashSize * m) / (Math.sqrt(1 + m * m));
-                double x1 = xMid - deltaX;
-                double y1 = yMid + deltaY;
-                double x2 = xMid + deltaX;
-                double y2 = yMid - deltaY;
-                g.setColor(Color.BLACK);
-                g.drawLine((int) (x1), (int) (y1), (int) (x2), (int) (y2));
+                int x1 = (int)(xMid - deltaX);
+                int y1 = (int)(yMid + deltaY);
+                int x2 = (int)(xMid + deltaX);
+                int y2 = (int)(yMid - deltaY);
+                g.setColor(c);
+                g.drawLine(x1, y1, x2, y2);
             }
         }
     }
