@@ -10,7 +10,7 @@ Kyle for Piedmont Hills High School AP CSA for Mr. Enriquez for the year of
 
 ### Harsh Panchal
  - Team Leader + Created the expression parser
- - Antisocial and doesn't know how to make friends outside C4T
+ - Antisocial and doesn't know how to make friends outside CS
  - Likes a text editor (older than java!) named neovim for some reason?
 
 ### Ricky Tran
