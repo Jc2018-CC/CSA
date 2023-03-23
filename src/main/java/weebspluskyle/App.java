@@ -86,8 +86,26 @@ public class App {
             int stepSize = Integer.parseInt(stepSet.getText());
             
             if (xMinSet >= xMaxSet || yMinSet >= yMaxSet || stepSize < 0){
-                //annoying popup or smth ig placeholder for now
-                System.out.println("You're an idiot, do you not know how cartesian works?");
+                JFrame errorFrame = new JFrame("ERROR 801");
+                errorFrame.setLayout(null);
+                errorFrame.setSize(450, 450);
+                JPanel errorPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 20));
+                errorFrame.add(errorPanel);
+                errorPanel.setBounds(0,0,450,450);
+                errorPanel.setBackground(Color.RED);
+                JLabel errorLabel = new JLabel("ERROR BAD SYNTAX");
+                errorLabel.setFont(new Font("Serif", Font.PLAIN, 25));                errorLabel.setForeground(Color.black);
+                errorPanel.add(errorLabel);
+                JLabel errorLabel2 = new JLabel("The minimum of domain of X can't be");
+                errorLabel2.setFont(new Font("Serif", Font.PLAIN, 16));                errorLabel2.setForeground(Color.black);
+                errorPanel.add(errorLabel2);
+                JLabel errorLabel3 = new JLabel("more or equal to the max, Same for Y");
+                errorLabel3.setFont(new Font("Serif", Font.PLAIN, 16));                errorLabel3.setForeground(Color.black);
+                errorPanel.add(errorLabel3);
+                JLabel errorLabel4 = new JLabel("Gap size must be more than 0");
+                errorLabel4.setFont(new Font("Serif", Font.PLAIN, 16));                errorLabel4.setForeground(Color.black);
+                errorPanel.add(errorLabel4);
+                errorFrame.setVisible(true);    
             } else {
             
                 try {
