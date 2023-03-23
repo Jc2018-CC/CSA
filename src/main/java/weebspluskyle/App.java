@@ -13,7 +13,7 @@ public class App {
         
         JPanel bPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 20));
         jFrame.add(bPanel);
-        bPanel.setBounds(55,85,270,290);
+        bPanel.setBounds(55,85,270,315);
         
         
         JLabel label = new JLabel("Slope Field Title");
@@ -88,20 +88,21 @@ public class App {
             if (xMinSet >= xMaxSet || yMinSet >= yMaxSet || stepSize < 0){
                 //annoying popup or smth ig placeholder for now
                 System.out.println("You're an idiot, do you not know how cartesian works?");
-            }
+            } else {
             
-            try {
-                Expression expression = new Expression();
-                expression.tokenize(rawExpression);
-                graph.draw(expression, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSize);
-            } catch (RuntimeException exception) {
-                exception.printStackTrace();
+                try {
+                    Expression expression = new Expression();
+                    expression.tokenize(rawExpression);
+                    graph.draw(expression, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSize);
+                } catch (RuntimeException exception) {
+                    exception.printStackTrace();
+                }
             }
         });
 
         Button devs = new Button("Meet the Devs of Weebs + Kyle");
         devs.setPreferredSize(new Dimension(220, 30));
-        jFrame.add(devs);
+        bPanel.add(devs);
 
         devs.addActionListener(e -> {
             Devs.newScreen();
