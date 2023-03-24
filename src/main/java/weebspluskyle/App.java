@@ -1,5 +1,5 @@
 package weebspluskyle;
-
+//possible ways to break the code: no input for tf, non (x or y or trig functions in equation tf
 import java.awt.*;
 import javax.swing.*;
 
@@ -65,7 +65,7 @@ public class App {
 
         JTextField stepSet = new JTextField();
         stepSet.setPreferredSize(new Dimension(200, 30));
-        TextPrompt tpGap = new TextPrompt("Gap Size", stepSet);
+        TextPrompt tpGap = new TextPrompt("Lines per Axis", stepSet);
         tpGap.changeAlpha(170);
         bPanel.add(stepSet);
 
@@ -133,3 +133,4 @@ public class App {
         createAndShowGUI();
     }
 }
+22
