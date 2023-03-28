@@ -73,6 +73,14 @@ public class App {
         submit.setPreferredSize(new Dimension(200, 30));
         bPanel.add(submit);
 
+        Button exit = new Button("Exit Program");
+        jFrame.add(exit);
+        exit.setBounds(600,0,50,30);
+        exit.addActionListener(e -> {
+            jFrame.setVisible(false);
+            System.out.println("bye broskis :)");
+        });
+        
         Graph graph = new Graph(340, 60, 300);
         jFrame.add(graph);
 
@@ -133,4 +141,3 @@ public class App {
         createAndShowGUI();
     }
 }
-22
