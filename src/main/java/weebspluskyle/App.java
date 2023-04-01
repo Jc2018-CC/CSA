@@ -20,7 +20,7 @@ public class App {
         jFrame.setMaximumSize(new Dimension(1200, 800));
 
         txtPanel.setLayout(new BoxLayout(txtPanel, BoxLayout.Y_AXIS));
-        txtPanel.setPreferredSize(new Dimension(50, 380));
+        txtPanel.setPreferredSize(new Dimension(60, 380));
         txtPanel.setMinimumSize(inputPanel.getPreferredSize());
         txtPanel.setMaximumSize(new Dimension(150, 2000));
         txtPanel.setBackground(Color.YELLOW);
@@ -43,9 +43,9 @@ public class App {
 
         // POPULATE TEXT PANEL
         Button exit = new Button("Quit");
-        exit.setPreferredSize(new Dimension(50, 20));
-        exit.setMinimumSize(inputPanel.getPreferredSize());
-        exit.setMaximumSize(new Dimension(75, 30));
+        exit.setPreferredSize(new Dimension(60, 30));
+        exit.setMinimumSize(new Dimension(60, 20));
+        exit.setMaximumSize(new Dimension(90, 30));
         exit.addActionListener(e -> {
             System.exit(0);
         });
@@ -66,7 +66,7 @@ public class App {
         dxtxt.setMinimumSize(inputPanel.getPreferredSize());
 
         txtPanel.add(exit);
-        txtPanel.add(Box.createRigidArea(new Dimension(0, 50)));
+        txtPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         txtPanel.add(dytxt);
         txtPanel.add(line);
         txtPanel.add(dxtxt);
@@ -109,13 +109,17 @@ public class App {
         inputPanel2.add(yMax, gbcInner);
 
         // POPULATE INPUT PANEL
-        JLabel title = new JLabel("Slope Field Generator");
+        JLabel title = new JLabel();
+        title.setText("Slope Field Generator");
+        title.setPreferredSize(new Dimension(200, 30));
+        title.setMaximumSize(title.getPreferredSize());
         JTextField tf = new JTextField(20);
         TextPrompt tpEquation = new TextPrompt("Equation", tf);
         tpEquation.changeAlpha(170);
-        tf.setPreferredSize(new Dimension(200, 30));
+        tf.setPreferredSize(new Dimension(300, 30));
         tf.setMaximumSize(tf.getPreferredSize());
-
+        tf.setMinimumSize(tf.getPreferredSize());
+        
         JTextField stepSet = new JTextField();
         TextPrompt tpGap = new TextPrompt("Density", stepSet);
         tpGap.changeAlpha(170);
