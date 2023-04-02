@@ -21,7 +21,7 @@ public class App {
 
         txtPanel.setLayout(new BoxLayout(txtPanel, BoxLayout.Y_AXIS));
         txtPanel.setPreferredSize(new Dimension(60, 380));
-        txtPanel.setMinimumSize(inputPanel.getPreferredSize());
+        txtPanel.setMinimumSize(txtPanel.getPreferredSize());
         txtPanel.setMaximumSize(new Dimension(150, 2000));
         txtPanel.setBackground(Color.YELLOW);
 
@@ -53,17 +53,17 @@ public class App {
         JLabel dytxt = new JLabel("DY");
         dytxt.setPreferredSize(new Dimension(50, 10));
         dytxt.setMaximumSize(new Dimension(75, 15));
-        dytxt.setMinimumSize(inputPanel.getPreferredSize());
+        dytxt.setMinimumSize(dytxt.getPreferredSize());
 
         JLabel line = new JLabel("___");
         line.setPreferredSize(new Dimension(50, 10));
         line.setMaximumSize(new Dimension(75, 15));
-        line.setMinimumSize(inputPanel.getPreferredSize());
+        line.setMinimumSize(line.getPreferredSize());
 
         JLabel dxtxt = new JLabel("DX");
         dxtxt.setPreferredSize(new Dimension(50, 20));
         dxtxt.setMaximumSize(new Dimension(75, 30));
-        dxtxt.setMinimumSize(inputPanel.getPreferredSize());
+        dxtxt.setMinimumSize(dxtxt.getPreferredSize());
 
         txtPanel.add(exit);
         txtPanel.add(Box.createRigidArea(new Dimension(0, 30)));
@@ -141,8 +141,8 @@ public class App {
         inputPanel.add(submit);
         inputPanel.add(Box.createVerticalGlue());
 
-        Graph graph = new Graph(340, 60, 300);
-        jFrame.add(graph);
+        //Graph graph = new Graph(340, 60, 300);
+        //jFrame.add(graph);
 
         submit.addActionListener(e -> {
             String rawExpression = tf.getText().trim();
@@ -159,7 +159,7 @@ public class App {
                 try {
                     Expression expression = new Expression();
                     expression.tokenize(rawExpression);
-                    graph.draw(expression, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSize);
+                    //graph.draw(expression, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSize);
                 } catch (RuntimeException exception) {
                     exception.printStackTrace();
                 }
