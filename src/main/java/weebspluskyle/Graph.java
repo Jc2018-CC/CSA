@@ -12,15 +12,17 @@ public class Graph extends JPanel {
     private int step;
     private Expression e;
 
-    public Graph(int x, int y, int initSize) {
-        size = initSize;
+    public Graph() {
+        size = 380;
         xMin = 0;
         xMax = 0;
         yMin = 0;
         yMax = 0;
         e = null;
 
-        setBounds(x, y, size, size);
+        setPreferredSize(new Dimension(360, 360));
+        setMinimumSize(getPreferredSize());
+        setMaximumSize(new Dimension(360, 360));
         setBackground(Color.WHITE);
     }
 
@@ -41,31 +43,41 @@ public class Graph extends JPanel {
         repaint();
     }
 
+    public void clear() {
+        this.e = null;
+        this.xMin = 0;
+        this.yMin = 0;
+        this.xMax = 0;
+        this.yMax = 0;
+        this.step = 0;
+        repaint();
+    }
+
     private void drawGrid(Graphics g) {
         int gridWidth = size / 10;
         g.setColor(Color.BLACK);
-        int xAxis = (int)(size * (-xMin/(xMax-xMin)));
+        int xAxis = (int) (size * (-xMin / (xMax - xMin)));
         g.drawLine(xAxis, 0, xAxis, size);
-        int yAxis = (int)(-size * (-yMin/(yMax-yMin))) + size;
+        int yAxis = (int) (-size * (-yMin / (yMax - yMin))) + size;
         g.drawLine(0, yAxis, size, yAxis);
         g.setColor(Color.LIGHT_GRAY);
         int x = xAxis - gridWidth;
-        while(x > 0){
+        while (x > 0) {
             g.drawLine(x, 0, x, size);
             x -= gridWidth;
         }
         x = xAxis + gridWidth;
-        while(x < size){
+        while (x < size) {
             g.drawLine(x, 0, x, size);
             x += gridWidth;
         }
         int y = yAxis - gridWidth;
-        while(y > 0){
+        while (y > 0) {
             g.drawLine(0, y, size, y);
             y -= gridWidth;
         }
         y = yAxis + gridWidth;
-        while(y < size){
+        while (y < size) {
             g.drawLine(0, y, size, y);
             y += gridWidth;
         }
@@ -75,11 +87,6 @@ public class Graph extends JPanel {
         if (e == null) {
             return;
         }
-
-        System.out.println(xMax);
-        System.out.println(xMin);
-        System.out.println(yMax);
-        System.out.println(yMin);
 
         double xIncrement = (xMax - xMin) / step;
         double yIncrement = (yMax - yMin) / step;
@@ -92,16 +99,16 @@ public class Graph extends JPanel {
                 double xMid = xMin + (0.5 + i) * xIncrement;
                 double yMid = yMin + (0.5 + j) * yIncrement;
                 m = e.evaluate(xMid, yMid);
-                Color c = new Color((int)(255/(1+Math.exp(m))),0,(int)(255/(1+Math.exp(-m))));
+                Color c = new Color((int) (255 / (1 + Math.exp(m))), 0, (int) (255 / (1 + Math.exp(-m))));
                 m *= (yScaler / xScaler);
                 xMid = xScaler * (xMid - xMin);
                 yMid = -(yScaler * (yMid - yMin) - size);
                 double deltaX = (dashSize) / (Math.sqrt(1 + m * m));
                 double deltaY = (dashSize * m) / (Math.sqrt(1 + m * m));
-                int x1 = (int)(xMid - deltaX);
-                int y1 = (int)(yMid + deltaY);
-                int x2 = (int)(xMid + deltaX);
-                int y2 = (int)(yMid - deltaY);
+                int x1 = (int) (xMid - deltaX);
+                int y1 = (int) (yMid + deltaY);
+                int x2 = (int) (xMid + deltaX);
+                int y2 = (int) (yMid - deltaY);
                 g.setColor(c);
                 g.drawLine(x1, y1, x2, y2);
             }

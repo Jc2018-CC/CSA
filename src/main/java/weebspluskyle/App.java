@@ -11,7 +11,7 @@ public class App {
         JPanel inputPanel = new JPanel();
         JPanel txtPanel = new JPanel();
         JPanel inputPanel2 = new JPanel();
-        JPanel graphPanel = new JPanel();
+        Graph graph = new Graph();
 
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setLayout(new GridBagLayout());
@@ -23,24 +23,16 @@ public class App {
         txtPanel.setPreferredSize(new Dimension(60, 380));
         txtPanel.setMinimumSize(txtPanel.getPreferredSize());
         txtPanel.setMaximumSize(new Dimension(150, 2000));
-        txtPanel.setBackground(Color.YELLOW);
 
         inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
         inputPanel.setPreferredSize(new Dimension(200, 380));
         inputPanel.setMinimumSize(inputPanel.getPreferredSize());
         inputPanel.setMaximumSize(new Dimension(255, 2000));
-        inputPanel.setBackground(Color.BLUE);
 
         inputPanel2.setLayout(new GridBagLayout());
         inputPanel2.setPreferredSize(new Dimension(170, 80));
         inputPanel2.setMinimumSize(inputPanel.getPreferredSize());
         inputPanel2.setMaximumSize(new Dimension(250, 2000));
-        inputPanel.setBackground(Color.BLUE);
-
-        graphPanel.setPreferredSize(new Dimension(360, 380));
-        graphPanel.setMinimumSize(graphPanel.getPreferredSize());
-        graphPanel.setMaximumSize(new Dimension(720, 720));
-        graphPanel.setBackground(Color.RED);
 
         // POPULATE TEXT PANEL
         Button exit = new Button("Quit");
@@ -67,7 +59,7 @@ public class App {
         dxtxt.setMinimumSize(dxtxt.getPreferredSize());
 
         txtPanel.add(exit);
-        txtPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+        txtPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         txtPanel.add(dytxt);
         txtPanel.add(line);
         txtPanel.add(dxtxt);
@@ -113,15 +105,19 @@ public class App {
         Label title = new Label("Slope Field Generator", SwingConstants.CENTER);
         title.setPreferredSize(new Dimension(230, 30));
         title.setMaximumSize(title.getPreferredSize());
-        title.setForeground(Color.WHITE);
         title.setFont(new Font("Verdana", Font.BOLD, 15));
+
+        Label errorMsg = new Label("", SwingConstants.CENTER);
+        errorMsg.setPreferredSize(new Dimension(230, 30));
+        errorMsg.setForeground(Color.RED);
+
         JTextField tf = new JTextField(20);
         TextPrompt tpEquation = new TextPrompt("Equation", tf);
         tpEquation.changeAlpha(170);
         tf.setPreferredSize(new Dimension(300, 30));
         tf.setMaximumSize(tf.getPreferredSize());
         tf.setMinimumSize(tf.getPreferredSize());
-        
+
         JTextField stepSet = new JTextField();
         TextPrompt tpGap = new TextPrompt("Density", stepSet);
         tpGap.changeAlpha(170);
@@ -142,29 +138,80 @@ public class App {
         inputPanel.add(Box.createVerticalGlue());
         inputPanel.add(submit);
         inputPanel.add(Box.createVerticalGlue());
-
-        //Graph graph = new Graph(340, 60, 300);
-        //jFrame.add(graph);
+        inputPanel.add(errorMsg);
+        inputPanel.add(Box.createVerticalGlue());
 
         submit.addActionListener(e -> {
-            String rawExpression = tf.getText().trim();
-            double xMinSet = Double.parseDouble(xMin.getText());
-            double yMinSet = Double.parseDouble(yMin.getText());
-            double xMaxSet = Double.parseDouble(xMax.getText());
-            double yMaxSet = Double.parseDouble(yMax.getText());
-            int stepSize = Integer.parseInt(stepSet.getText());
+            String rawExpression = tf.getText().replaceAll(" ", "");
+            errorMsg.setText("");
+            graph.clear();
 
-            if (xMinSet >= xMaxSet || yMinSet >= yMaxSet || stepSize < 0 || rawExpression.isEmpty()) {
-                App.error();
-            } else {
+            if (rawExpression.equals("")) {
+                errorMsg.setText("<html>Expression is empty</html>");
+                return;
+            }
+            if (xMin.getText().replaceAll(" ", "").equals("")) {
+                errorMsg.setText("<html>X Min is empty</html>");
+                return;
+            }
+            if (xMin.getText().replaceAll(" ", "").equals("")) {
+                errorMsg.setText("<html>X Min is empty</html>");
+                return;
+            }
+            if (xMax.getText().replaceAll(" ", "").equals("")) {
+                errorMsg.setText("<html>X Max is empty</html>");
+                return;
+            }
+            if (yMin.getText().replaceAll(" ", "").equals("")) {
+                errorMsg.setText("<html>Y Min is empty</html>");
+                return;
+            }
+            if (yMax.getText().replaceAll(" ", "").equals("")) {
+                errorMsg.setText("<html>Y Max is empty</html>");
+                return;
+            }
+            if (stepSet.getText().replaceAll(" ", "").equals("")) {
+                errorMsg.setText("<html>Density is empty</html>");
+                return;
+            }
 
-                try {
-                    Expression expression = new Expression();
-                    expression.tokenize(rawExpression);
-                    //graph.draw(expression, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSize);
-                } catch (RuntimeException exception) {
-                    exception.printStackTrace();
-                }
+            double xMinSet;
+            double yMinSet;
+            double xMaxSet;
+            double yMaxSet;
+            int stepSize;
+            try {
+                xMinSet = Double.parseDouble(xMin.getText());
+                yMinSet = Double.parseDouble(yMin.getText());
+                xMaxSet = Double.parseDouble(xMax.getText());
+                yMaxSet = Double.parseDouble(yMax.getText());
+                stepSize = Integer.parseInt(stepSet.getText());
+            } catch (RuntimeException exception) {
+                errorMsg.setText("Invalid Text Entered");
+                return;
+            }
+
+            if (xMinSet >= xMaxSet) {
+                errorMsg.setText("<html>X Min is greater than or equal to X Max</html>");
+                return;
+            }
+            if (yMinSet >= yMaxSet) {
+                errorMsg.setText("<html>Y Min is greater than or equal to Y Max</html>");
+                return;
+            }
+            if (stepSize < 5) {
+                errorMsg.setText("<html>Minimum density should be 5 or higher</html>");
+                return;
+            }
+
+            try {
+                Expression expression = new Expression();
+                expression.tokenize(rawExpression);
+                expression.evaluate(1, 1); // dummy evaluation to catch errors
+                graph.draw(expression, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSize);
+            } catch (RuntimeException exception) {
+                errorMsg.setText("<html>" + exception.getMessage() + "</html>");
+                return;
             }
         });
 
@@ -188,37 +235,11 @@ public class App {
         gbc.gridx = 1;
         jFrame.add(inputPanel, gbc);
         gbc.gridx = 2;
-        jFrame.add(graphPanel, gbc);
+        gbc.ipadx = 20;
+        jFrame.add(graph, gbc);
         jFrame.setVisible(true);
         jFrame.pack();
         jFrame.setVisible(true);
-    }
-
-    public static void error() {
-        JFrame errorFrame = new JFrame("ERROR 801");
-        errorFrame.setLayout(null);
-        errorFrame.setSize(450, 450);
-        JPanel errorPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 20));
-        errorFrame.add(errorPanel);
-        errorPanel.setBounds(0, 0, 450, 450);
-        errorPanel.setBackground(Color.RED);
-        JLabel errorLabel = new JLabel("ERROR BAD SYNTAX");
-        errorLabel.setFont(new Font("Serif", Font.PLAIN, 25));
-        errorLabel.setForeground(Color.black);
-        errorPanel.add(errorLabel);
-        JLabel errorLabel2 = new JLabel("The minimum of domain of X can't be");
-        errorLabel2.setFont(new Font("Serif", Font.PLAIN, 16));
-        errorLabel2.setForeground(Color.black);
-        errorPanel.add(errorLabel2);
-        JLabel errorLabel3 = new JLabel("more or equal to the max, Same for Y");
-        errorLabel3.setFont(new Font("Serif", Font.PLAIN, 16));
-        errorLabel3.setForeground(Color.black);
-        errorPanel.add(errorLabel3);
-        JLabel errorLabel4 = new JLabel("Gap size must be more than 0");
-        errorLabel4.setFont(new Font("Serif", Font.PLAIN, 16));
-        errorLabel4.setForeground(Color.black);
-        errorPanel.add(errorLabel4);
-        errorFrame.setVisible(true);
     }
 
     public static void main(String[] args) {
