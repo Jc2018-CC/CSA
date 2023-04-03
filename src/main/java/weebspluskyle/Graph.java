@@ -1,7 +1,10 @@
 package weebspluskyle;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
 
 public class Graph extends JPanel {
     private int size;

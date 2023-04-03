@@ -1,8 +1,22 @@
 package weebspluskyle;
 
-//possible ways to break the code: no input for tf, non (x or y or trig functions in equation tf
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.Label;
+
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class App {
     private static void createAndShowGUI() {
@@ -107,9 +121,14 @@ public class App {
         title.setMaximumSize(title.getPreferredSize());
         title.setFont(new Font("Verdana", Font.BOLD, 15));
 
-        Label errorMsg = new Label("", SwingConstants.CENTER);
-        errorMsg.setPreferredSize(new Dimension(230, 30));
+        // Label errorMsg = new Label("", SwingConstants.CENTER);
+        JTextArea errorMsg = new JTextArea();
+        errorMsg.setMaximumSize(new Dimension(230, 30));
         errorMsg.setForeground(Color.RED);
+        errorMsg.setBackground(jFrame.getBackground());
+        errorMsg.setEditable(false);
+        errorMsg.setLineWrap(true);
+        errorMsg.setWrapStyleWord(true);
 
         JTextField tf = new JTextField(20);
         TextPrompt tpEquation = new TextPrompt("Equation", tf);
@@ -147,31 +166,31 @@ public class App {
             graph.clear();
 
             if (rawExpression.equals("")) {
-                errorMsg.setText("<html>Expression is empty</html>");
+                errorMsg.setText("Expression is empty");
                 return;
             }
             if (xMin.getText().replaceAll(" ", "").equals("")) {
-                errorMsg.setText("<html>X Min is empty</html>");
+                errorMsg.setText("X Min is empty");
                 return;
             }
             if (xMin.getText().replaceAll(" ", "").equals("")) {
-                errorMsg.setText("<html>X Min is empty</html>");
+                errorMsg.setText("X Min is empty");
                 return;
             }
             if (xMax.getText().replaceAll(" ", "").equals("")) {
-                errorMsg.setText("<html>X Max is empty</html>");
+                errorMsg.setText("X Max is empty");
                 return;
             }
             if (yMin.getText().replaceAll(" ", "").equals("")) {
-                errorMsg.setText("<html>Y Min is empty</html>");
+                errorMsg.setText("Y Min is empty");
                 return;
             }
             if (yMax.getText().replaceAll(" ", "").equals("")) {
-                errorMsg.setText("<html>Y Max is empty</html>");
+                errorMsg.setText("Y Max is empty");
                 return;
             }
             if (stepSet.getText().replaceAll(" ", "").equals("")) {
-                errorMsg.setText("<html>Density is empty</html>");
+                errorMsg.setText("Density is empty");
                 return;
             }
 
@@ -192,15 +211,15 @@ public class App {
             }
 
             if (xMinSet >= xMaxSet) {
-                errorMsg.setText("<html>X Min is greater than or equal to X Max</html>");
+                errorMsg.setText("X Min is greater than or equal to X Max");
                 return;
             }
             if (yMinSet >= yMaxSet) {
-                errorMsg.setText("<html>Y Min is greater than or equal to Y Max</html>");
+                errorMsg.setText("Y Min is greater than or equal to Y Max");
                 return;
             }
             if (stepSize < 5) {
-                errorMsg.setText("<html>Minimum density should be 5 or higher</html>");
+                errorMsg.setText("Minimum density should be 5 or higher");
                 return;
             }
 
@@ -210,7 +229,7 @@ public class App {
                 expression.evaluate(1, 1); // dummy evaluation to catch errors
                 graph.draw(expression, xMinSet, yMinSet, xMaxSet, yMaxSet, stepSize);
             } catch (RuntimeException exception) {
-                errorMsg.setText("<html>" + exception.getMessage() + "</html>");
+                errorMsg.setText(exception.getMessage());
                 return;
             }
         });
