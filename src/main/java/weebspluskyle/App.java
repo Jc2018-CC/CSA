@@ -15,7 +15,7 @@ public class App {
 
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setLayout(new GridBagLayout());
-        jFrame.setPreferredSize(new Dimension(600, 400));
+        jFrame.setPreferredSize(new Dimension(700, 450));
         jFrame.setMinimumSize(jFrame.getPreferredSize());
         jFrame.setMaximumSize(new Dimension(1200, 800));
 
@@ -35,6 +35,7 @@ public class App {
         inputPanel2.setPreferredSize(new Dimension(170, 80));
         inputPanel2.setMinimumSize(inputPanel.getPreferredSize());
         inputPanel2.setMaximumSize(new Dimension(250, 2000));
+        inputPanel.setBackground(Color.BLUE);
 
         graphPanel.setPreferredSize(new Dimension(360, 380));
         graphPanel.setMinimumSize(graphPanel.getPreferredSize());
@@ -109,10 +110,11 @@ public class App {
         inputPanel2.add(yMax, gbcInner);
 
         // POPULATE INPUT PANEL
-        JLabel title = new JLabel();
-        title.setText("Slope Field Generator");
-        title.setPreferredSize(new Dimension(200, 30));
+        Label title = new Label("Slope Field Generator", SwingConstants.CENTER);
+        title.setPreferredSize(new Dimension(230, 30));
         title.setMaximumSize(title.getPreferredSize());
+        title.setForeground(Color.WHITE);
+        title.setFont(new Font("Verdana", Font.BOLD, 15));
         JTextField tf = new JTextField(20);
         TextPrompt tpEquation = new TextPrompt("Equation", tf);
         tpEquation.changeAlpha(170);
